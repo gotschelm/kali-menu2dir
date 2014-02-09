@@ -40,6 +40,8 @@ def create_script(filename, content):
         if e.errno is not errno.EEXIST:
             raise
 
+    content = content.replace('${SHELL:-bash}', '')
+
     with open(filename, 'w') as f:
         f.write(content)
 
