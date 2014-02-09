@@ -2,10 +2,7 @@
 
 from xdg.Menu import parse, Menu, MenuEntry
 from xdg.DesktopEntry import DesktopEntry
-import os
-import errno
-import sys
-
+import os, stat, errno, sys
 
 #execs = []
 
@@ -13,7 +10,7 @@ def create_dir_menu(menu, dest_dir):
     for submenu in menu.Entries:
         if isinstance(submenu, Menu):
             #print ("\t" * tab) + unicode(submenu)
-            create_dir_menu(submenu)
+            create_dir_menu(submenu, dest_dir)
         elif isinstance(submenu, MenuEntry):
             #print ("\t" * tab) + unicode(submenu.DesktopEntry)
             for parent in submenu.Parents:
